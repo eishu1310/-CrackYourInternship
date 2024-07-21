@@ -1,0 +1,15 @@
+class Solution:
+    def findDuplicate(self, nums: List[int]) -> int:
+        nums.sort()
+        s,e = 0,len(nums)-1
+        m = s + (e-s)//2
+        while(s<=e):
+            if(nums[s]==nums[m]):
+                break
+            if(nums[m]-nums[s]<(m-s)):
+                e = m
+            elif(nums[m]-nums[s]>=(m-s)):
+                s = m
+            m = s+(e-s)//2
+        return nums[m] 
+        
